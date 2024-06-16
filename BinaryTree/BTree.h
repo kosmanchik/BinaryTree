@@ -114,26 +114,26 @@ void BinaryTree<K_t, T>::delete_node(K_t Usr_key)
 
 	while (Current_node != nullptr)
 	{
-
 		if (Usr_key <= Current_node->Key)
 		{
 			if (Current_node->Left_child->Key == Usr_key)
 			{
+				Node<K_t, T>* To_save = Current_node->Left_child->Right_child;
 				Node<K_t, T>* To_delete = Current_node->Left_child;
-				Current_node->Left_child = nullptr;
+				Current_node->Left_child = To_save;
 				delete To_delete;
 				this->Size--;
 				return;
 			}
 			Current_node = Current_node->Left_child;
-
 		}
 		else
 		{
 			if (Current_node->Right_child->Key == Usr_key)
 			{
+				Node<K_t, T>* To_save = Current_node->Right_child->Right_child;
 				Node<K_t, T>* To_delete = Current_node->Right_child;
-				Current_node->Right_child = nullptr;
+				Current_node->Right_child = To_save;
 				delete To_delete;
 				this->Size--;
 				return;
